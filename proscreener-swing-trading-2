@@ -1,24 +1,38 @@
-// Indicateurs
+// ************************** Indicateurs ************************** //
 SMA100 = Average[100](close)
 SMA150 = Average[150](close)
 SMA200 = Average[200](close)
 alignPeriod = 10
 Volmini = 10000
+priceCrossesSma100 = 0
+crossingPeriod = 20
 
 
 
 
-// Conditions :
-C1 = close CROSSES OVER SMA100 // Bougie > sma100
-C2 = close = SMA100  // Cloture de la bougie
-C3 = Low[0] = SMA100  // Bas de la bougie
+
+
+// ************************** Conditions ************************** //
+// Bougie > sma100 :
+C1 = Close CROSSES OVER SMA100
+
+// Cloture de la bougie :
+C2 = Close = SMA100
+
+// Bas de la bougie :
+C3 = Low[0] = SMA100
 C4 = C1 + C2 + C3
-C5 = SMA100 > SMA200 // sma100 > sma200
-C6 = SMA100[0] >= SMA100[1] OR SMA100[1] >= SMA100[2] OR SMA100[2] >= SMA100[3] OR SMA100[3] >= SMA100[4] OR SMA100[4] >= SMA100[5] // sma100 haussière
-C7 = VOLUME >= Volmini // Volume minimum
 
+// sma100 > sma200 :
+C5 = SMA100 > SMA200
 
-// Conditions d'alignement
+// sma100 haussière :
+C6 = SMA100[0] >= SMA100[1] OR SMA100[1] >= SMA100[2] OR SMA100[2] >= SMA100[3] OR SMA100[3] >= SMA100[4] OR SMA100[4] >= SMA100[5]
+
+// Volume minimum :
+C7 = VOLUME >= Volmini
+
+// Conditions d'alignement :
 C8 = 1
 FOR i = 0 TO alignPeriod DO
 IF NOT (SMA100[i] > SMA150[i] AND SMA150[i] > SMA200[i]) THEN
@@ -28,8 +42,21 @@ ENDIF
 i = i+1
 NEXT
 
+// Condition : Croisement des SMA :
+C9 = 0
+FOR i = 0 TO crossingPeriod DO
+IF (Close[i] CROSSES OVER SMA100 OR Low[i] CROSSES UNDER SMA100 OR Low[i] CROSSES OVER SMA100) THEN
+priceCrossesSma100 = 1
+BREAK
+ENDIF
+i = i+1
+NEXT
+C9 = priceCrossesSma100
 
 
 
-// Screener :
-SCREENER [C4 and C5 and C6 and C7 and C8]
+
+
+
+// ************************** Screener ************************** //
+SCREENER [C4 and C5 and C6 and C7 and C8 and C9]
