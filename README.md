@@ -7,4 +7,4 @@ Il détecte les actifs qui répondent aux conditions suivantes :
 - Le volume est supérieur ou égal à 10000.
 - Les SMA100, SMA150 et SMA200 sont alignées dans l'ordre croissant pour une période d'alignement spécifiée (alignPeriod = 10), 
 
-Le langage utilisé est « ProBuilder », un langage propre à la plateforme de Trading Prorealtime.
+Le langage utilisé est ProRealcode, un langage propre à la plateforme de Trading Prorealtime.
