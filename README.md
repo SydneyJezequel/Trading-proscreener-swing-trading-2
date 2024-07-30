@@ -12,11 +12,11 @@ Ci-dessous des exemples d'actions détectées par le screener.
 
 
 
-Exemple sur l’action INPOST :
+Exemple sur l’action INPOST au 30/07/2024 :
 ￼
 ![Capture d’écran 2024-07-30 à 20 42 24](https://github.com/user-attachments/assets/3ea883e5-17b2-43b4-b223-0c0ffd4cd527)
 
 
-Exemple sur l’action LISI :
+Exemple sur l’action LISI au 30/07/2024 :
 
 ![Capture d’écran 2024-07-30 à 20 42 38](https://github.com/user-attachments/assets/1a24d29e-8240-4148-8e34-6eb25ba83f2c)
